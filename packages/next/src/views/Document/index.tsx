@@ -113,6 +113,8 @@ export const Document: React.FC<AdminViewProps> = async ({
         user,
       })
 
+      console.log('collectionViews', collectionViews)
+
       CustomView = collectionViews?.CustomView
       DefaultView = collectionViews?.DefaultView
       ErrorView = collectionViews?.ErrorView
@@ -222,6 +224,7 @@ export const Document: React.FC<AdminViewProps> = async ({
 
   const viewComponentProps: ServerSideEditViewProps = {
     initPageResult,
+    params,
     routeSegments: segments,
     searchParams,
   }

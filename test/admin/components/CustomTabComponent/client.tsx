@@ -1,16 +1,17 @@
 'use client'
 
 import LinkImport from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import React from 'react'
 
 const Link = (LinkImport.default || LinkImport) as unknown as typeof LinkImport.default
 
 export const CustomTabComponentClient: React.FC<{
   path: string
-}> = (props) => {
-  const { path } = props
-  const pathname = usePathname()
+}> = ({ path }) => {
+  const params = useParams()
 
-  return <Link href={`${pathname}${path}`}>Custom Tab Component</Link>
+  const baseRoute = (params.segments.slice(0, 4) as string[]).join('/')
+
+  return <Link href={`${baseRoute}${path}`}>Custom Tab Component</Link>
 }
